@@ -86,7 +86,7 @@ export default class CompilerClient extends Client {
     if (this.maitenance)
 		  this.user.setPresence({activity: {name: `MAINTENENCE MODE`}, status: 'dnd'});
 	  else
-	  	this.user.setPresence({activity: {name: `in ${count} servers | ${this.prefix}invite`}, status: 'online'});
+	  	this.user.setPresence({activity: {name: `in ${count} servers`}, status: 'online'});
   }
 
   /**

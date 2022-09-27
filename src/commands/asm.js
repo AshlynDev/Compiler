@@ -114,14 +114,15 @@ export default class AsmCommand extends CompilerCommand {
         }
 
         //remove our react
-        if (reactionSuccess && this.client.loading_emote) {
+        // Lmao I broke it, sorry <3
+       /* if (reactionSuccess && this.client.loading_emote) {
             try {
                 await msg.message.reactions.resolve(this.client.loading_emote).users.remove(this.client.user);
             }
             catch (error) {
                 msg.replyFail(`Unable to remove reactions, am I missing permissions?\n${error}`);
             }
-        }   
+        }*/ 
                 
         let embed = null;
         if (errors == null) {

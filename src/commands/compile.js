@@ -101,14 +101,15 @@ export default class CompileCommand extends CompilerCommand {
         }
 
         //remove our react
-        if (reactionSuccess && this.client.loading_emote) {
+        // Lmao I broke it, sorry <3
+        /*if (reactionSuccess && this.client.loading_emote) {
             try {
                 await msg.message.reactions.resolve(this.client.loading_emote).users.remove(this.client.user);
             }
             catch (error) {
                 msg.replyFail(`Unable to remove reactions, am I missing permissions?\n${error}`);
             }
-        }   
+        }*/
 
         SupportServer.postCompilation(code, lang, json.url, msg.message.author, msg.message.guild, json.status == 0, json.compiler_message, this.client.compile_log, this.client.token);
 
