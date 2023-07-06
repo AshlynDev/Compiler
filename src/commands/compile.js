@@ -115,10 +115,6 @@ export default class CompileCommand extends CompilerCommand {
 
         let embed = CompileCommand.buildResponseEmbed(msg, json);
         let responsemsg = await msg.dispatch('', embed);
-        
-        if (this.client.shouldTrackStats())
-            this.client.stats.compilationExecuted(lang, embed.color == 0xFF0000);
-
         try {
             responsemsg.react((embed.color == 0xFF0000)?'❌':'✅');
         }

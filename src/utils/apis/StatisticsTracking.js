@@ -12,13 +12,7 @@ export class StatisticsAPI {
      * @param {CompilerClient} client
      * @param {string} url
      */
-    constructor(client, url) {
-        /**
-         * API Key for request authentication
-         * 
-         * @type {string}
-         */
-        this.key = process.env.STATS_API_KEY;
+    constructor(client) {
 
         /**
          * Discord client
@@ -26,13 +20,6 @@ export class StatisticsAPI {
          * @type {CompilerClient}
          */        
         this.client = client;
-
-        /**
-         * Stats API url
-         * 
-         * @type {string}
-         */
-        this.url = url;
     }
 
     /**

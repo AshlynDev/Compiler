@@ -21,12 +21,6 @@ export default class CompilerClient extends Client {
     super(options);
 
     /**
-     * Statistics tracking API
-     * @type {StatisticsAPI}
-     */
-    this.stats = new StatisticsAPI(this, options.stats_api_link);
-
-    /**
      * Collection of commands for lookup
      * @type {CommandCollection}
      */
@@ -73,9 +67,7 @@ export default class CompilerClient extends Client {
     this.compile_log = options.compile_log;
     this.dbl_log = options.dbl_log;
     this.github_link = options.github_link;
-    this.stats_link = options.stats_link;
     this.owner_id = options.owner_id;
-    this.stats_api_link = options.stats_api_link;
   }
 
   /**
@@ -98,25 +90,6 @@ export default class CompilerClient extends Client {
     let values = await this.shard.fetchClientValues('guilds.cache.size')
     let guildCount = values.reduce((a, b) => a + b);
     return guildCount;  
-  }
-
-  /**
-   * Pushes the server count to the custom stats api
-   * 
-   * @param {number} guildCount number of guilds
-   */
-  updateServerCount(guildCount) {
-    if (this.shouldTrackStats())
-	  	this.stats.insertServerCount(guildCount);
-  }
-
-  /**
-   * Determines if statistics should be tracked
-   * 
-   * @returns {boolean}
-   */
-  shouldTrackStats() {
-    return (this.maitenance)?false:this.stats_api_link;
   }
 
   /**
@@ -170,12 +143,5 @@ export default class CompilerClient extends Client {
     this.on('message', async (message) => {
       this.messagerouter.route(message);
     })
-    .on('commandExecuted', async (f) => {
-      if (this.shouldTrackStats() && !f.developerOnly)
-      {
-        this.stats.commandExecuted(f.name);
-        this.stats.incrementRequestCount();	
-      }
-    });
   }
 }

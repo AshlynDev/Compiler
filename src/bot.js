@@ -17,9 +17,7 @@ const client = new CompilerClient({
 	invite_link: process.env.INVITE_LINK,
 	discordbots_link: process.env.DISCORDBOTS_LINK,
 	github_link: process.env.GITHUB_LINK,
-	stats_link: process.env.STATS_LINK,
 	owner_id: process.env.OWNER_ID,
-	stats_api_link: process.env.STATS_API_LINK,
 
 	ws: {
 		intents: ["GUILDS", "GUILD_MESSAGES", "GUILD_MESSAGE_REACTIONS"]
